@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "api/webhook.js": { "maxDuration": 10 },
+    "api/checkout.js": { "maxDuration": 10 },
+    "api/verify-purchase.js": { "maxDuration": 10 }
+  },
+  "rewrites": [
+    { "source": "/success", "destination": "/success.html" }
+  ]
+}
