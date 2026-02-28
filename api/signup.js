@@ -71,7 +71,7 @@ function buildWelcomeEmail(source) {
         Free AI teaching tools
       </h2>
       <p style="color:#4a4a5e;font-size:14px;line-height:1.6;margin:0 0 16px;">
-        Get 4 AI-powered commands (/plan, /rubric, /differentiate, /quiz) that work inside Claude. Two-minute setup, no install required.
+        Get 5 AI-powered commands (/plan, /rubric, /differentiate, /quiz, plus a bonus /sub-plan) that work inside Claude. Two-minute setup, no install required.
       </p>
       <a href="https://freeperiod.co/free-tools"
          style="color:#0d9488;font-weight:700;font-size:14px;text-decoration:underline;">
