@@ -1654,34 +1654,34 @@ function handleSubmit(e, form) {
   button.disabled = true;
 
   const source = form.dataset.source || 'unknown';
-  const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScgwMboGki238NhxCjm2Xolbl_6CM5I4qo8jd7C8x4FoNdVbw/formResponse';
-  const formData = new URLSearchParams();
-  formData.append('entry.2116253119', email);
-  formData.append('entry.1234567890', source);
 
-  fetch(formUrl, {
+  fetch('/api/signup', {
     method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: formData.toString()
-  }).then(() => {
-    input.value = '';
-    button.textContent = 'You\'re in! Check your inbox';
-    button.style.background = '#6b9080';
-    button.style.color = 'white';
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, source })
+  }).then(res => res.json()).then(data => {
+    if (data.success) {
+      input.value = '';
+      button.textContent = 'You\'re in! Check your inbox';
+      button.style.background = '#6b9080';
+      button.style.color = 'white';
+    } else {
+      button.textContent = 'Something went wrong';
+      button.style.background = '#c0392b';
+      button.style.color = 'white';
+    }
     setTimeout(() => {
-      button.textContent = form.querySelector('button').dataset.original || 'Submit';
+      button.textContent = button.dataset.original || 'Submit';
       button.disabled = false;
       button.style.background = '';
       button.style.color = '';
     }, 3000);
   }).catch(() => {
-    input.value = '';
-    button.textContent = 'You\'re in! Check your inbox';
-    button.style.background = '#6b9080';
+    button.textContent = 'Something went wrong';
+    button.style.background = '#c0392b';
     button.style.color = 'white';
     setTimeout(() => {
-      button.textContent = form.querySelector('button').dataset.original || 'Submit';
+      button.textContent = button.dataset.original || 'Submit';
       button.disabled = false;
       button.style.background = '';
       button.style.color = '';
